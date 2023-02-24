@@ -14,7 +14,9 @@ async function startApolloServer(typeDefs, resolvers) {
     context: connectMongo(),
   });
 
-  const { url, port } = await apolloServer.listen();
+  const { url, port } = await apolloServer.listen({
+    port: process.env.PORT || 4000,
+  });
   console.log(`
       🚀  Server is running
       🔉  Listening on port ${port}
