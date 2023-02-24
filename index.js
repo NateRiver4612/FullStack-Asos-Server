@@ -12,6 +12,7 @@ async function startApolloServer(typeDefs, resolvers) {
     typeDefs,
     resolvers,
     context: connectMongo(),
+    introspection: process.env.NODE_ENV == "production",
   });
 
   const { url, port } = await apolloServer.listen({
