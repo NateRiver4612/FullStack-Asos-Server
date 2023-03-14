@@ -1,4 +1,4 @@
-const Product = require("../models/product.model");
+const Product = require("../../models/product.model");
 const axios = require("axios");
 
 const create_LikeProduct = async (
@@ -45,7 +45,7 @@ const create_LikeProduct = async (
 
 module.exports = {
   Query: {
-    getLikedProducts: async () => {
+    getLikedProducts: async (parent) => {
       try {
         const likedProducts = await Product.find({
           likeCount: { $gte: 1 },
@@ -100,13 +100,13 @@ module.exports = {
         );
 
         if (likedUser) {
-          const res = await existedProduct.update({
+          const res = await existedProduct.updateOne({
             likes: existedProduct.likes.filter((user) => user.id !== userID),
             // $pull: { likes: { $id: id } },
             $inc: { likeCount: -1 },
           });
         } else {
-          const res = await existedProduct.update({
+          const res = await existedProduct.updateOne({
             $push: {
               likes: {
                 id: userID,
