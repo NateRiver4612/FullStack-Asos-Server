@@ -105,7 +105,7 @@ const typeDefs = gql`
   type Query {
     getUsers: [Account]
     getLikedProducts: [Product]
-    getCart(userId: String!): [CartItem]
+    getCart(userId: String!): [CartItem!]
   }
 
   type Mutation {
