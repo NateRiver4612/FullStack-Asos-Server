@@ -126,7 +126,7 @@ const typeDefs = gql`
     likeProduct(input: LikeProduct_Input!): Product!
     removeFromCart(input: RemoveFromCart_Input!): CartItem
     updateCartQuantity(input: UpdateCartQuantity_Input): CartItem!
-    checkoutSuccess(input: CheckoutSuccess_Input): [Product]
+    checkoutSuccess(input: CheckoutSuccess_Input): [Product!]
   }
 `;
 
